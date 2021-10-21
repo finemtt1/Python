@@ -3,9 +3,8 @@ import numpy as np
 import time
 
 img = cv2.imread("smooth.jpg",0)
-Img_shape = img.shape 
 h = img.shape[0]
-w = img.shape[1]
+w = img.shape[1] 
 
 t= 130
 t_new=0

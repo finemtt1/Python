@@ -19,6 +19,8 @@ width = img.shape[1]
 img_gauss = cv2.GaussianBlur(img, (5, 5), 0)
 # cv2.imshow("gauss",img_gauss)
 # cv2.waitKey(0)
+cv2.imwrite("smooth_cv.jpg",img_gauss)
+
 
 # thresholding
 # ADAPTIVE_THRESH_MEAN_C 算術平均二值化:(IMAGES,255,算法,閥值類型,參考局部大小,偏移量)

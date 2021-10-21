@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 img = cv2.imread("img1.jpg")
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) 
 
-kernel_size = 5
+kernel_size = 3
 filter_avg = np.ones((kernel_size, kernel_size), dtype=np.float32) / kernel_size**2
 Filter_shape = filter_avg.shape
 Img_shape = img.shape
