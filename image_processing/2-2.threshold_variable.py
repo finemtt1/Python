@@ -3,7 +3,7 @@ import numpy as np
 import time
 
 # 載入灰階圖片
-img = cv2.imread("smooth.jpg",0)
+img = cv2.imread("smooth_gaussian_3x3.jpg",0)
 
 # 建立filter
 filter_size = 3
@@ -55,4 +55,4 @@ for i in range(x1,x2): # i 從 filter中心開始
 end = time.process_time()
 print((end-start))
 
-cv2.imwrite("threshold_variable3_a=10,b=0.5.jpg", img)
+cv2.imwrite("threshold_variable_gaussian_a=10,b=0.5.jpg", img)

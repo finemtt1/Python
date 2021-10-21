@@ -37,7 +37,7 @@ for i in range(x1,x2):
 
 end = time.process_time()
 print(end-start)
-cv2.imwrite("smooth_gaussian_3x3.jpg",img)
+# cv2.imwrite("smooth_gaussian_3x3.jpg",img)
 # cv2.imwrite("smooth_avg_3x3.jpg",img)
 
 # cv2.imshow("hh",img)

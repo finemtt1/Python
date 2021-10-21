@@ -5,7 +5,10 @@ import time
 img = cv2.imread("W_A1_0_3.jpg",0)
 
 kernel_size = 3
-#Filter_gaussian = np.array(([1,2,1],[2,4,2],[1,2,1])) / 16
+#Filter_gaussian = np.array((
+# [1,2,1],
+# [2,4,2],
+# [1,2,1])) / 16
 Filter_avg = np.ones((kernel_size, kernel_size), dtype=np.float32) / kernel_size**2
 
 Img_shape = img.shape 
