@@ -6,7 +6,7 @@ img = cv2.imread("D:\\Python\\trainnig\\k-means\\img2.jpg")
 h, w, c = img.shape
 
 # 調整 image 矩陣 ; (-1)代表np由剩下的維度計算 (x,y)從2維改成一維
-img = np.reshape(img,(-1,3)) #(480000,3) b,g,r的灰階值
+img = np.reshape(img,(-1,3)) 
 '''
 img 降成二維矩陣
 axis = 0 列 row :bgr值  ， 每列分別運算處理
@@ -23,9 +23,33 @@ img_kmeans = np.zeros((h * w, 3), dtype= np.uint8) # 圖片要還原成uint8 才
 
 #------------------- 設定隨機數與初始值---------------------------------
 # k聚類中心數量
-k = 6
-rand = np.random.randint(low= 0, high=(h*w), size=k) # 隨機取K個數，範圍h*w 
-cluster= img[rand].copy()
+k = 5
+# rand = np.random.randint(low= 0, high=(h*w), size=k) # 隨機取K個數，範圍h*w 
+# cluster = img[rand].copy()
+
+# # 手動設定聚類中心
+# cluster = np.zeros((k,3),dtype = np.uint8)
+# cluster[0] = [255,146,0]
+# cluster[1] = [255,255,255]
+# cluster[2] = [45,86,58]
+# cluster[3] = [161,154,75]
+# cluster[4] = [8,195,115]
+
+# # 隨機挑選K範圍
+a = 255/k #51
+rand1 = np.random.randint(low= 0, high=(a)) # 隨機取K個數，範圍h*w 
+rand2 = np.random.randint(low= a, high=(a*2))
+rand3 = np.random.randint(low= a*2, high=(a*3))
+rand4 = np.random.randint(low= a*3, high=(a*4))
+rand5 = np.random.randint(low= a*4, high=(a*5))
+cluster = np.zeros((k,3),dtype = np.uint8)
+cluster[0] = [rand1,rand1,rand1]
+cluster[1] = [rand2,rand2,rand2]
+cluster[2] = [rand3,rand3,rand3]
+cluster[3] = [rand4,rand4,rand4]
+cluster[4] = [rand5,rand5,rand5]
+
+
 '''
 cluster 把k值存成二維矩陣
 [[b1  g1  r1]    k1 
@@ -33,6 +57,7 @@ cluster 把k值存成二維矩陣
  [b3  g3  r3]    k3
  ...]
 '''
+print(cluster)
 
 cluster_new = np.zeros((k,3),dtype=np.int32) # 新聚類中心    #(BGR值存放k個)     
 
@@ -43,7 +68,7 @@ delta = 100
 
 # --------------------------------------------------------------------------
 # 重複迴圈直到 群集中心的差異收斂
-while delta > 90:
+while delta > 1:
         
         # Step1. 計算像素到每個聚類中心的距離
         for i in range(w*h): 
@@ -84,5 +109,5 @@ for i in range(k) :
 # 還原圖片矩陣
 img_kmeans = np.reshape(img_kmeans,(h, w, 3))
 
-cv2.imshow("result", img_kmeans)
+cv2.imshow("kmeans", img_kmeans)
 cv2.waitKey(0)
